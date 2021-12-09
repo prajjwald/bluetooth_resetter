@@ -22,7 +22,7 @@ This is how it does it (with reasonable success for me):
 git clone https://github.com/prajjwald/bluetooth_resetter.git
 cd bluetooth_resetter
 #default is 3 seconds, but let's do 10, just to be safe
-sudo bin/bluetooth_reset.sh 10
+sudo bin/bluetooth_reset.sh restart 10
 ```
 
 #### Installation - adds a .desktop file for easy access from the desktop
@@ -37,7 +37,7 @@ At this point, you can either run the script from the command line or directly f
 
 run the script from the command line:
 
-```sudo bluetooth_reset.sh 60```
+```sudo /usr/local/sbin/bluetooth_reset.sh restart 60```
 
 ##### Running Graphically From the Desktop
 
