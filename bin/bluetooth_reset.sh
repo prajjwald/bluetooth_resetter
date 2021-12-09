@@ -17,7 +17,7 @@ forMods() {
     for mod in ${BLUETOOTH_MODS};
     do
         echo $mod;
-        ${CMD} $mod;
+        sudo ${CMD} $mod;
     done
 }
 
@@ -35,14 +35,14 @@ cmd_start() {
     #Bluetooth id changes after rmmod/modprobe
     BLUETOOTH_ID=$(rfkill list | grep hci | cut -d: -f1);
     echo "Starting up Bluetooth: id is ${BLUETOOTH_ID}";
-    rfkill unblock ${BLUETOOTH_ID};
+    sudo rfkill unblock ${BLUETOOTH_ID};
     cmd_info;
 }
 
 cmd_stop() {
     BLUETOOTH_ID=$(rfkill list | grep hci | cut -d: -f1);
     echo "Shutting down Bluetooth: id is ${BLUETOOTH_ID}";
-    rfkill block ${BLUETOOTH_ID};
+    sudo rfkill block ${BLUETOOTH_ID};
 
     echo "Attempting to remove modules"
     forMods rmmod;

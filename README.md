@@ -16,6 +16,8 @@ This is how it does it (with reasonable success for me):
 
 ### QuickStart
 
+#### Without 'Installing'
+
 ```bash
 git clone https://github.com/prajjwald/bluetooth_resetter.git
 cd bluetooth_resetter
@@ -23,14 +25,29 @@ cd bluetooth_resetter
 sudo bin/bluetooth_reset.sh 10
 ```
 
-Or do as I do (I think you're going to need this more than once, unfortunately):
+#### Installation - adds a .desktop file for easy access from the desktop
+
+First, run the install script (uninstallation can be done using './uninstall')
 
 ```bash
-sudo cp bin/bluetooth_reset.sh
-#default is 3 seconds, but let's do 10, just to be safe
-sudo bluetooth_reset.sh 10
+sudo ./install
 ```
 
+At this point, you can either run the script from the command line or directly from the desktop.
+
+run the script from the command line:
+
+```sudo bluetooth_reset.sh 60```
+
+##### Running Graphically From the Desktop
+
+- Search for bluetooth in the activities area:
+
+![bluetooth_resetter](images/application_search.png)
+
+- When you run it - it will create an authentication prompt, after which you should see the command run in a temporary terminal like so:
+
+![command_run](images/graphical_run.png)
 
 ### Recommendations 
 

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#vi:ft=bash
+
+do_uninstall() {
+    set -x;
+    rm /usr/local/sbin/bluetooth_reset.sh;
+    rm /usr/local/share/applications/bluetooth_reset.desktop;
+    rm /usr/local/share/pixmaps/bluetooth-active.png;
+    set +x
+    echo "Done with uninstallation"
+}
+
+[ ${USER} == root ] && do_uninstall || echo "$(basename $0) must be run as root"

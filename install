@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#vi:ft=bash
+
+do_install() {
+    set -x;
+    cp bin/bluetooth_reset.sh /usr/local/sbin/bluetooth_reset.sh;
+    cp desktop/bluetooth_reset.desktop /usr/local/share/applications/bluetooth_reset.desktop;
+    cp desktop/bluetooth-active.png /usr/local/share/pixmaps/bluetooth-active.png;
+    set +x
+
+    echo "Done with installation"
+}
+
+[ ${USER} == root ] && do_install || echo "$(basename $0) must be run as root"
