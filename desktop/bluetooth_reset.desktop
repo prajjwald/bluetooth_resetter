@@ -3,4 +3,4 @@ Type=Application
 Terminal=true
 Name=Bluetooth Resetter
 Icon=/usr/local/share/pixmaps/bluetooth-active.png
-Exec=pkexec sh -c "/usr/local/sbin/bluetooth_reset_dummy.sh restart 60; sleep 5;"
+Exec=pkexec sh -c "/usr/local/sbin/bluetooth_reset.sh restart 10; sleep 5;"
