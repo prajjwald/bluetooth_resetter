@@ -4,6 +4,7 @@
 
 do_install() {
     set -x;
+    mkdir -p /usr/local/share/{applications,pixmaps};
     cp bin/bluetooth_reset.sh /usr/local/sbin/bluetooth_reset.sh;
     cp desktop/bluetooth_reset.desktop /usr/local/share/applications/bluetooth_reset.desktop;
     cp desktop/bluetooth-active.png /usr/local/share/pixmaps/bluetooth-active.png;
