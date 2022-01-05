@@ -51,6 +51,7 @@ cmd_stop() {
 cmd_restart() {
 
     SLEEP_INTERVAL=${1:-$DEFAULT_SLEEP_INTERVAL};
+    WAIT_BEFORE_EXIT_SCRIPT_INTERVAL=${2:-0};
 
     cmd_stop
     cat << EOF
@@ -68,7 +69,15 @@ EOF
     sleep ${SLEEP_INTERVAL};
 
     cmd_start
+
+    # Sleep some more before returning for desktop launch so user can see output if they want
+    [ ${WAIT_BEFORE_EXIT_SCRIPT_INTERVAL} -gt 0 ] && {
+
+        echo "Sleeping for ${WAIT_BEFORE_EXIT_SCRIPT_INTERVAL} seconds before exiting script";
+        sleep ${WAIT_BEFORE_EXIT_SCRIPT_INTERVAL};
+
+    }
 }
 
 declare -F cmd_${1} > /dev/null || usage;
-cmd_${1} ${2};
+cmd_${1} ${2} ${3};
