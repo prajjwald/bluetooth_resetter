@@ -8,6 +8,7 @@ do_install() {
     cp bin/bluetooth_reset.sh /usr/local/sbin/bluetooth_reset.sh;
     cp desktop/bluetooth_reset.desktop /usr/local/share/applications/bluetooth_reset.desktop;
     cp desktop/bluetooth-active.png /usr/local/share/pixmaps/bluetooth-active.png;
+    cp polkit/org.bluetooth_reset.policy /usr/share/polkit-1/actions/org.bluetooth_reset.policy;
     set +x
 
     echo "Done with installation"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+"-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+"http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+    <vendor>Bluetooth Resetter Script</vendor>
+    <vendor_url>https://github.com/prajjwald/bluetooth_resetter</vendor_url>
+
+    <action id="org.bluetooth_reset.policy">
+        <description>Reset Bluetooth</description>
+        <!-- <message>Authentication is required to run the Bluetooth Resetter (user=$(user), program=$(program), command_line=$(command_line))</message> -->
+        <message>Authentication is required to run the Bluetooth Resetter</message>
+        <icon_name>audio-x-generic</icon_name>
+        <defaults>
+            <allow_any>no</allow_any>
+            <allow_inactive>no</allow_inactive>
+            <!-- <allow_active>auth_self_keep</allow_active> -->
+            <allow_active>yes</allow_active>
+        </defaults>
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/local/sbin/bluetooth_reset.sh</annotate>
+    </action>
+
+</policyconfig>

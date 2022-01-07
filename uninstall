@@ -7,6 +7,7 @@ do_uninstall() {
     rm /usr/local/sbin/bluetooth_reset.sh;
     rm /usr/local/share/applications/bluetooth_reset.desktop;
     rm /usr/local/share/pixmaps/bluetooth-active.png;
+    rm /usr/share/polkit-1/actions/org.bluetooth_reset.policy;
     set +x
     echo "Done with uninstallation"
 }
