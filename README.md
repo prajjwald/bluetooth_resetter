@@ -14,7 +14,26 @@ This is how it does it (with reasonable success for me):
 - load the unloaded bluetooth modules again, using ```modprobe```
 - turn bluetooth on using ```rfkill```
 
-### QuickStart
+### Quick Start
+
+<span style="color:red">Quick Note:</span> Install [blueman](https://github.com/blueman-project/blueman), it is worth it.
+
+<details>
+  <summary>More details on blueman</summary>
+
+Regardless of if/how you use this script (graphically after installation (*more convenient*) or as a script), I highly recommend [blueman](https://github.com/blueman-project/blueman) - better diagnostics, reliable connectivity compared to using Gnome settings/bluetooth for me).
+
+Installation is as simple as running the following apt install command:
+
+```bash
+sudo apt install -y blueman
+```
+
+ Here's what blueman looks like:
+
+![blueman](images/blueman_screenshot.png)
+
+</details>
 
 #### Without 'Installing'
 
@@ -25,7 +44,9 @@ cd bluetooth_resetter
 sudo bin/bluetooth_reset.sh restart 10
 ```
 
-#### Installation - adds a .desktop file for easy access from the desktop
+#### Installation
+
+##### - adds desktop icon, puts script in /usr/local/bin
 
 First, run the install script (uninstallation can be done using './uninstall')
 
@@ -45,11 +66,11 @@ run the script from the command line:
 
 ![bluetooth_resetter](images/application_search.png)
 
-- When you run it - it will create an authentication prompt, after which you should see the command run in a temporary terminal like so:
+- When you run it - you should see the command run in a temporary terminal like so (*note that you don't need to enter your password for the script to run using the graphical shortcut*):
 
 ![command_run](images/graphical_run.png)
 
-### Recommendations 
+### Recommendations
 
 - The *blueman* utility is very helpful, and is easy to install - just run ```sudo apt -y install blueman``` - this is **highly recommended**
 
