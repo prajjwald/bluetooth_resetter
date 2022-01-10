@@ -38,10 +38,10 @@ sudo apt install -y blueman
 #### Without 'Installing'
 
 ```bash
-git clone https://github.com/prajjwald/bluetooth_resetter.git
-cd bluetooth_resetter
+wget https://raw.githubusercontent.com/prajjwald/bluetooth_resetter/main/bin/bluetooth_reset.sh && \
+chmod +x bluetooth_reset.sh && \
 #default is 3 seconds, but let's do 10, just to be safe
-sudo bin/bluetooth_reset.sh restart 10
+sudo ./bluetooth_reset.sh restart 10
 ```
 
 #### Installation
@@ -51,6 +51,8 @@ sudo bin/bluetooth_reset.sh restart 10
 First, run the install script (uninstallation can be done using './uninstall')
 
 ```bash
+git clone https://github.com/prajjwald/bluetooth_resetter.git
+cd bluetooth_resetter
 sudo ./install
 ```
 

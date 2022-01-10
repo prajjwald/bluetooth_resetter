@@ -11,8 +11,8 @@
 **Configuration File**: `/etc/bluetooth/main.conf`
 
 - it looks like there is a setting: *Enable Fast Connect* (**might require reboot**) \- this is disabled by default as it has two gotchas:
-    - only works on kernel 4.1 or newer (all modern desktops hopefully do so)
-    - consumes more power on your PC
+  - only works on kernel 4.1 or newer (all modern desktops hopefully do so)
+  - consumes more power on your PC
 
 Edit the configuration file as root, and change the **FastConnectable** setting to *true* like so:
 
