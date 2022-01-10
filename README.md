@@ -6,15 +6,20 @@
 
 This script attempts to solve a very annoying problem in Ubuntu 20.04+, where bluetooth devices (I have had problems with multiple headphones) - bluetooth audio either mysteriously stops playing after a while, then refuses to reconnect, or I have to un-pair, then re-pair my headphones, or I have to restart the computer entirely to get it working.
 
-This is how it does it (with reasonable success for me):
+### How the Script Resets Bluetooth
 
-- turn bluetooth off using ```rfkill```
-- unload as many bluetooth modules as it can using ```rmmod```
+**TL;DR: disconnect devices, turn off bluetooth, unload modules, load modules, turn on bluetooth, reconnect devices**
+
+- use `bluetoothctl` to note currently connected devices, while disconnecting all (including inactive, to account for ongoing connection attempts)
+- turn bluetooth off using `rfkill`
+- unload as many bluetooth modules as it can using `rmmod`
 - sleep for 3 seconds, which can be overridden in the command line
-- load the unloaded bluetooth modules again, using ```modprobe```
-- turn bluetooth on using ```rfkill```
+- load the unloaded bluetooth modules again, using `modprobe`
+- turn bluetooth on using `rfkill`
+- sleep for 10 seconds
+- reconnect all devices that had been in **connected** status using `bluetoothctl`
 
-### Quick Start
+## Quick Start
 
 <span style="color:red">Quick Note:</span> Install [blueman](https://github.com/blueman-project/blueman), it is worth it.
 
@@ -35,7 +40,7 @@ sudo apt install -y blueman
 
 </details>
 
-#### Without 'Installing'
+### Without 'Installing'
 
 ```bash
 wget https://raw.githubusercontent.com/prajjwald/bluetooth_resetter/main/bin/bluetooth_reset.sh && \
@@ -44,9 +49,9 @@ chmod +x bluetooth_reset.sh && \
 sudo ./bluetooth_reset.sh restart 10
 ```
 
-#### Installation
+### Installation
 
-##### - adds desktop icon, puts script in /usr/local/bin
+#### - adds desktop icon, puts script in /usr/local/bin
 
 First, run the install script (uninstallation can be done using './uninstall')
 
@@ -62,7 +67,7 @@ run the script from the command line:
 
 ```sudo /usr/local/sbin/bluetooth_reset.sh restart 60```
 
-##### Running Graphically From the Desktop
+#### Running Graphically From the Desktop
 
 - Search for bluetooth in the activities area:
 
@@ -72,7 +77,7 @@ run the script from the command line:
 
 ![command_run](images/graphical_run.png)
 
-### Recommendations
+## Recommendations
 
 - The *blueman* utility is very helpful, and is easy to install - just run ```sudo apt -y install blueman``` - this is **highly recommended**
 
@@ -80,7 +85,7 @@ run the script from the command line:
 
 Feel free to share/suggest your own notes too.  I really hope this helps you (if you're here, I assume you're suffering, just like I was).
 
-#### Some Observations Leading to the Script
+## Some Observations Leading to the Script
 
 - blueman has helped - it works better than the Gnome applet/settings when things go awry. Error messages are also more helpful.
 - even when connected - the bluetooth audio might stop working after some inactivity(?) - though it has also stopped working at times even when I was using it (audio switched to speakers)
@@ -91,7 +96,7 @@ Feel free to share/suggest your own notes too.  I really hope this helps you (if
 
 With these observations at hand, [this](bin/bluetooth_reset.sh) is my current attempt at a script that seems to somewhat help.
 
-### Some Things That Would Be Nice To Have (but Aren’t There Yet)
+## Some Things That Would Be Nice To Have (but Aren’t There Yet)
 
 #### Upgraded (or Even Downgraded) bluez
 
